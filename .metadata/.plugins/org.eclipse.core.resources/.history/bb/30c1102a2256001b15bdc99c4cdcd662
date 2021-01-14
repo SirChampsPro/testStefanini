@@ -1,0 +1,202 @@
+package webdriverJava;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import junit.framework.Assert;
+
+@SuppressWarnings("deprecation")
+public class telaCadastroUsuarioStefaniniTest {
+
+	private WebDriver navegador;
+
+	@Before
+	public void setUp() {
+		System.setProperty("webdriver.chrome.driver",
+				"/home/wellington/eclipse-workspace/chromedriver_linux64/chromedriver");
+		navegador = new ChromeDriver();
+
+		navegador.get("http://prova.stefanini-jgr.com.br/teste/qa/");
+	}
+
+	public void validarExistenciaElementoPeloId(String elemento, String identificador) {
+		boolean encontrei;
+
+		try {
+			navegador.findElement(By.id(identificador));
+			encontrei = true;
+		} catch (Exception e) {
+			encontrei = false;
+		}
+
+		Assert.assertTrue(encontrei);
+	}
+
+	public void validarExistenciaElementoPeloXpath(String xpath, String texto) {
+		navegador.findElement(By.xpath(xpath)).getText().toString();
+		
+		Assert.assertEquals(xpath, texto);
+		
+	}
+
+	public void preencherCampo(String id, String value) {
+		navegador.findElement(By.id(id)).sendKeys(value);
+	}
+
+	public void clicarBtn(String id) {
+		navegador.findElement(By.id(id)).click();
+	}
+
+	@Test
+	public void tela1_validarExistenciaElementos() {
+
+		validarExistenciaElementoPeloXpath("Texto Formulário", "/html/body/div/div/div/div[2]/h2");
+
+		validarExistenciaElementoPeloId("campo nome", "name");
+
+		validarExistenciaElementoPeloId("campo email", "email");
+
+		validarExistenciaElementoPeloId("campo senha", "password");
+
+		validarExistenciaElementoPeloId("botão cadastrar", "register");
+
+	}
+
+	@Test
+	public void tela2_validarMsgErro() {
+
+		preencherCampo("email", "wellington@hotmail.com");
+
+		preencherCampo("password", "12345678");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("Mensagem de erro campo nome",
+				"/html/body/div/div/div/div[2]/form/div[1]/p");
+	}
+
+	@Test
+	public void tela3_validarMsgErro() {
+
+		preencherCampo("name", "Wellington Araujo");
+
+		preencherCampo("password", "123456789");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("Mensagem de erro campo email",
+				"//*[@id=\"root\"]/div/div/div[2]/form/div[2]/p");
+	}
+
+	@Test
+	public void tela4_validarMsgErro() {
+		
+		preencherCampo("name", "Wellington Araujo");
+
+		preencherCampo("email", "wellington@hotmail.com");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("Mensagem de erro campo senha",
+				"/html/body/div/div/div/div[2]/form/div[3]/p");
+	}
+	
+	@Test
+	public void tela5_validarMsgErro() {
+
+		clicarBtn("register");
+		
+		validarExistenciaElementoPeloXpath("Mensagem de erro campo nome",
+				"/html/body/div/div/div/div[2]/form/div[1]/p");
+		
+		validarExistenciaElementoPeloXpath("Mensagem de erro campo email",
+				"//*[@id=\"root\"]/div/div/div[2]/form/div[2]/p");
+
+		validarExistenciaElementoPeloXpath("Mensagem de erro campo senha",
+				"/html/body/div/div/div/div[2]/form/div[3]/p");
+	}
+	
+	@Test
+	public void tela6_validarMsgErro() {
+		
+		preencherCampo("name", "Wellington");
+
+		preencherCampo("email", "wellington@hotmail.com");
+		
+		preencherCampo("password", "12345678");
+		
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("Mensagem de erro nome incompleto",
+				"/html/body/div/div/div/div[2]/form/div[1]/p");
+	}
+	
+	@Test
+	public void tela7_validarMsgErro() {
+		
+		preencherCampo("name", "Wellington");
+
+		preencherCampo("email", "wellington.hotmail.com");
+		
+		preencherCampo("password", "12345678");
+		
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("Mensagem de erro email incompleto",
+				"/html/body/div/div/div/div[2]/form/div[2]/p");
+	}
+	
+	@Test
+	public void tela8_validarMsgErro() {
+		
+		preencherCampo("name", "Wellington");
+
+		preencherCampo("email", "wellington.hotmail.com");
+		
+		preencherCampo("password", "123");
+		
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("Mensagem de erro senha menos de 8 caracteres",
+				"/html/body/div/div/div/div[2]/form/div[3]/p");
+	}
+
+	@Test
+	public void tela9_cadastrarUsuario() {
+
+		preencherCampo("name", "Wellington Araujo");
+
+		preencherCampo("email", "wellington@hotmail.com");
+		
+		preencherCampo("password", "12354616");
+		
+		clicarBtn("register");
+		
+		String texto = navegador.findElement(By.xpath("/html/body/div/div/div/div[2]/h2[2]")).getText().toString();
+
+		Assert.assertEquals(texto, "Usuários cadastrados");
+
+		String id = navegador.findElement(By.id("tdUserId1")).getText().toString();
+
+		Assert.assertEquals(id, "1");
+
+		String name = navegador.findElement(By.id("tdUserName1")).getText().toString();
+
+		Assert.assertEquals(name, "Wellington Araujo");
+
+		String email = navegador.findElement(By.id("tdUserEmail1")).getText().toString();
+
+		Assert.assertEquals(email, "wellington@hotmail.com");
+
+	}
+
+	@After
+	public void tearDown() {
+
+		navegador.close();
+	}
+}

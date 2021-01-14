@@ -1,0 +1,21 @@
+package webdriverJava;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class telaCadastroUsuarioStefaniniTest {
+
+	@Test
+	public void cadastrarUsuario () {
+		System.setProperty("webdriver.chrome.driver", "/home/wellington/eclipse-workspace/chromedriver_linux64/chromedriver");
+		WebDriver navegador = new ChromeDriver();
+		
+		navegador.get("http://prova.stefanini-jgr.com.br/teste/qa/");
+		navegador.findElement(By.id("name")).sendKeys("Wellington Araujo");
+
+		navegador.findElement(By.id("")).sendKeys("");
+		
+	}
+}

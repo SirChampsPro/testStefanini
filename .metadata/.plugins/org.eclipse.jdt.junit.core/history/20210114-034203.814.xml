@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="telaCadastroUsuarioStefaniniTest" project="webdriverJava" tests="11" started="11" failures="0" errors="1" ignored="0">
+  <testsuite name="webdriverJava.telaCadastroUsuarioStefaniniTest" time="30.983">
+    <testcase name="tela8_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.088"/>
+    <testcase name="tela9_cadastrarUsuario" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.047"/>
+    <testcase name="tela1_validarExistenciaElementos" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="1.947"/>
+    <testcase name="tela7_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.06"/>
+    <testcase name="tela10_cadastrarDoisUsuarios" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.391"/>
+    <testcase name="tela6_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.07"/>
+    <testcase name="tela5_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.935"/>
+    <testcase name="tela11_excluirUsuario" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.5">
+      <error>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#\/html\/body\/div\/div\/div\/div\[2\]\/table\/tr\/td\[2\]"}
+  (Session info: chrome=87.0.4280.141)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.6.0', revision: '6fbf3ec767', time: '2017-09-27T15:28:36.4Z'
+System info: host: 'wellington-pc', ip: '192.168.15.28', os.name: 'Linux', os.arch: 'amd64', os.version: '5.8.15-301.fc33.x86_64', java.version: '11.0.9.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{networkConnectionEnabled=false, chrome={chromedriverVersion=87.0.4280.88 (89e2380a3e36c3464b5dd1302349b1382549290d-refs/branch-heads/4280@{#1761}), userDataDir=/tmp/.com.google.Chrome.aqKrRj}, timeouts={implicit=0, pageLoad=300000, script=30000}, pageLoadStrategy=normal, unhandledPromptBehavior=dismiss and notify, strictFileInteractability=false, platform=LINUX, proxy=Proxy(), goog:chromeOptions={debuggerAddress=localhost:37013}, acceptInsecureCerts=false, browserVersion=87.0.4280.141, browserName=chrome, javascriptEnabled=true, platformName=LINUX, setWindowRect=true, webauthn:virtualAuthenticators=true}]
+Session ID: 2f0936eee6c912380d79152d58259fd2
+*** Element info: {Using=id, value=/html/body/div/div/div/div[2]/table/tr/td[2]}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:586)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:402)
+	at org.openqa.selenium.By$ById.findElement(By.java:218)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:348)
+	at webdriverJava.telaCadastroUsuarioStefaniniTest.tela11_excluirUsuario(telaCadastroUsuarioStefaniniTest.java:253)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+
+</error>
+    </testcase>
+    <testcase name="tela4_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.067"/>
+    <testcase name="tela3_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="1.853"/>
+    <testcase name="tela2_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.024"/>
+  </testsuite>
+</testrun>

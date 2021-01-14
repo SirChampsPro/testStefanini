@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="telaCadastroUsuarioStefaniniTest" project="webdriverJava" tests="11" started="11" failures="0" errors="0" ignored="0">
+  <testsuite name="webdriverJava.telaCadastroUsuarioStefaniniTest" time="24.893">
+    <testcase name="tela8_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="3.213"/>
+    <testcase name="tela9_cadastrarUsuario" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.816"/>
+    <testcase name="tela1_validarExistenciaElementos" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.036"/>
+    <testcase name="tela7_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.219"/>
+    <testcase name="tela10_cadastrarDoisUsuarios" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.285"/>
+    <testcase name="tela6_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="1.968"/>
+    <testcase name="tela5_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="1.821"/>
+    <testcase name="tela11_excluirUsuario" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.341"/>
+    <testcase name="tela4_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.133"/>
+    <testcase name="tela3_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="1.919"/>
+    <testcase name="tela2_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.141"/>
+  </testsuite>
+</testrun>

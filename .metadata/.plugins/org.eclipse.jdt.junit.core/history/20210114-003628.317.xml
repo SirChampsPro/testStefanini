@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="telaCadastroUsuarioStefaniniTest" project="webdriverJava" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="webdriverJava.telaCadastroUsuarioStefaniniTest" time="10.985">
+    <testcase name="tela1_validarExistenciaElementos" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.885"/>
+    <testcase name="tela4_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.131"/>
+    <testcase name="tela3_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="1.851"/>
+    <testcase name="tela2_validarMsgErro" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="1.857"/>
+    <testcase name="cadastrarUsuario" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.261"/>
+  </testsuite>
+</testrun>

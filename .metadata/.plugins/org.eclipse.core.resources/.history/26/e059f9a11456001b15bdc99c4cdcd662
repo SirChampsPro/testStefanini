@@ -1,0 +1,107 @@
+package webdriverJava;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import junit.framework.Assert;
+
+@SuppressWarnings("deprecation")
+public class telaCadastroUsuarioStefaniniTest {
+
+	private WebDriver navegador;
+	
+	@Before
+	public void setUp() {
+		System.setProperty("webdriver.chrome.driver",
+				"/home/wellington/eclipse-workspace/chromedriver_linux64/chromedriver");
+		navegador = new ChromeDriver();
+
+		navegador.get("http://prova.stefanini-jgr.com.br/teste/qa/");
+	}
+	
+	public void validarExistenciaElementoPeloId(String identificador) {
+		boolean encontrei;
+		
+		try {
+			navegador.findElement(By.id(identificador));	
+			encontrei = true;
+		} catch (Exception e) {
+			encontrei = false;
+		}
+		
+		Assert.assertTrue(encontrei);
+	}
+	
+	public void validarExistenciaElementoPeloXpath(String identificador) {
+		boolean encontrei;
+		
+		try {
+			navegador.findElement(By.id(identificador));	
+			encontrei = true;
+		} catch (Exception e) {
+			encontrei = false;
+		}
+		
+		Assert.assertTrue(encontrei);
+	}
+	
+	@Test
+	public void cadastrarUsuarioTela1() {
+
+		validarExistenciaElementoPeloId("name");
+		
+		validarExistenciaElementoPeloId("email");
+		
+		validarExistenciaElementoPeloId("password");
+		
+		validarExistenciaElementoPeloId("register");
+		
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/h2[2]");
+		
+		validarExistenciaElementoPeloId("tdUserId1");
+		
+		validarExistenciaElementoPeloId("tdUserName1");
+		
+		validarExistenciaElementoPeloId("tdUserEmail1");
+
+	}
+
+	@Test
+	public void cadastrarUsuario() {
+
+		navegador.findElement(By.id("name")).sendKeys("Wellington Araujo");
+
+		navegador.findElement(By.id("email")).sendKeys("wellington@hotmail.com");
+
+		navegador.findElement(By.id("password")).sendKeys("12345678");
+
+		navegador.findElement(By.id("register")).click();
+
+		String texto = navegador.findElement(By.xpath("/html/body/div/div/div/div[2]/h2[2]")).getText().toString();
+
+		Assert.assertEquals(texto, "Usuários cadastrados");
+
+		String id = navegador.findElement(By.id("tdUserId1")).getText().toString();
+
+		Assert.assertEquals(id, "1");
+
+		String name = navegador.findElement(By.id("tdUserName1")).getText().toString();
+
+		Assert.assertEquals(name, "Wellington Araujo");
+
+		String email = navegador.findElement(By.id("tdUserEmail1")).getText().toString();
+
+		Assert.assertEquals(email, "wellington@hotmail.com");
+
+	}
+
+	@After
+	public void tearDown() {
+
+		navegador.close();
+	}
+}

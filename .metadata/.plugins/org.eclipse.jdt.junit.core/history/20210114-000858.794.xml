@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="telaCadastroUsuarioStefaniniTest" project="webdriverJava" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="webdriverJava.telaCadastroUsuarioStefaniniTest" time="5.035">
+    <testcase name="cadastrarUsuarioTela1" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.954"/>
+    <testcase name="cadastrarUsuario" classname="webdriverJava.telaCadastroUsuarioStefaniniTest" time="2.081"/>
+  </testsuite>
+</testrun>

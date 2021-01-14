@@ -1,0 +1,47 @@
+package webdriverJava;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import junit.framework.Assert;
+
+public class telaCadastroUsuarioStefaniniTest {
+
+	@SuppressWarnings("deprecation")
+	@Test
+	public void cadastrarUsuario() {
+		System.setProperty("webdriver.chrome.driver",
+				"/home/wellington/eclipse-workspace/chromedriver_linux64/chromedriver");
+		WebDriver navegador = new ChromeDriver();
+
+		navegador.get("http://prova.stefanini-jgr.com.br/teste/qa/");
+
+		navegador.findElement(By.id("name")).sendKeys("Wellington Araujo");
+
+		navegador.findElement(By.id("email")).sendKeys("wellington@hotmail.com");
+
+		navegador.findElement(By.id("password")).sendKeys("12345678");
+
+		navegador.findElement(By.id("register")).click();
+
+		String texto = navegador.findElement(By.xpath("/html/body/div/div/div/div[2]/h2[2]")).getText().toString();
+
+		Assert.assertEquals(texto, "Usuários cadastrados");
+
+		String id = navegador.findElement(By.id("tdUserId1")).getText().toString();
+
+		Assert.assertEquals(id, "1");
+
+		String name = navegador.findElement(By.id("tdUserName1")).getText().toString();
+
+		Assert.assertEquals(name, "Wellington Araujo");
+
+		String email = navegador.findElement(By.id("tdUserEmail1")).getText().toString();
+
+		Assert.assertEquals(email, "wellington@hotmail.com");
+
+		navegador.close();
+	}
+}

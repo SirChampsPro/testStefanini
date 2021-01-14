@@ -1,0 +1,266 @@
+package webdriverJava;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import junit.framework.Assert;
+
+@SuppressWarnings("deprecation")
+public class telaCadastroUsuarioStefaniniTest {
+
+	private WebDriver navegador;
+
+	@Before
+	public void setUp() {
+		System.setProperty("webdriver.chrome.driver",
+				"/home/wellington/eclipse-workspace/chromedriver_linux64/chromedriver");
+		navegador = new ChromeDriver();
+
+		navegador.get("http://prova.stefanini-jgr.com.br/teste/qa/");
+	}
+
+	public void validarExistenciaElementoPeloId(String elemento, String identificador) {
+		boolean encontrei;
+
+		try {
+			navegador.findElement(By.id(identificador));
+			encontrei = true;
+		} catch (Exception e) {
+			encontrei = false;
+		}
+
+		Assert.assertTrue(encontrei);
+	}
+
+	public void validarExistenciaElementoPeloXpath(String xpath, String texto) {
+		String novoXpath = navegador.findElement(By.xpath(xpath)).getText().toString();
+
+		Assert.assertEquals(novoXpath, texto);
+
+	}
+
+//	public boolean validarUsuarioExcluido(String identificador) {
+//
+//		try {
+//			WebElement excluir = navegador.findElement(By.id(identificador));
+//			return true;
+//		} catch (Exception e) {
+//			return false;
+//		}
+//		
+//		Assert.assertFalse(excluir);
+//
+//	}
+
+	public void preencherCampo(String id, String value) {
+		navegador.findElement(By.id(id)).sendKeys(value);
+	}
+
+	public void clicarBtn(String id) {
+		navegador.findElement(By.id(id)).click();
+	}
+
+	public void cadastrarUsuario(String userName, String userEmail, String userPassword) {
+
+		preencherCampo("name", userName);
+
+		preencherCampo("email", userEmail);
+
+		preencherCampo("password", userPassword);
+
+		clicarBtn("register");
+	}
+
+	@Test
+	public void tela1_validarExistenciaElementos() {
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/h2", "Formulário");
+
+		validarExistenciaElementoPeloId("campo nome", "name");
+
+		validarExistenciaElementoPeloId("campo email", "email");
+
+		validarExistenciaElementoPeloId("campo senha", "password");
+
+		validarExistenciaElementoPeloId("botão cadastrar", "register");
+
+	}
+
+	@Test
+	public void tela2_validarMsgErro() {
+
+		preencherCampo("email", "wellington@hotmail.com");
+
+		preencherCampo("password", "12345678");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/form/div[1]/p",
+				"O campo Nome é obrigatório.");
+	}
+
+	@Test
+	public void tela3_validarMsgErro() {
+
+		preencherCampo("name", "Wellington Araujo");
+
+		preencherCampo("password", "123456789");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("//*[@id=\"root\"]/div/div/div[2]/form/div[2]/p",
+				"O campo E-mail é obrigatório.");
+	}
+
+	@Test
+	public void tela4_validarMsgErro() {
+
+		preencherCampo("name", "Wellington Araujo");
+
+		preencherCampo("email", "wellington@hotmail.com");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/form/div[3]/p",
+				"O campo Senha é obrigatório.");
+	}
+
+	@Test
+	public void tela5_validarMsgErro() {
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/form/div[1]/p",
+				"O campo Nome é obrigatório.");
+
+		validarExistenciaElementoPeloXpath("//*[@id=\"root\"]/div/div/div[2]/form/div[2]/p",
+				"O campo E-mail é obrigatório.");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/form/div[3]/p",
+				"O campo Senha é obrigatório.");
+	}
+
+	@Test
+	public void tela6_validarMsgErro() {
+
+		preencherCampo("name", "Wellington");
+
+		preencherCampo("email", "wellington@hotmail.com");
+
+		preencherCampo("password", "12345678");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/form/div[1]/p",
+				"Por favor, insira um nome completo.");
+	}
+
+	@Test
+	public void tela7_validarMsgErro() {
+
+		preencherCampo("name", "Wellington");
+
+		preencherCampo("email", "wellington.hotmail.com");
+
+		preencherCampo("password", "12345678");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/form/div[2]/p",
+				"Por favor, insira um e-mail válido.");
+	}
+
+	@Test
+	public void tela8_validarMsgErro() {
+
+		preencherCampo("name", "Wellington");
+
+		preencherCampo("email", "wellington.hotmail.com");
+
+		preencherCampo("password", "123");
+
+		clicarBtn("register");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/form/div[3]/p",
+				"A senha deve conter ao menos 8 caracteres.");
+	}
+
+	@Test
+	public void tela9_cadastrarUsuario() {
+
+		cadastrarUsuario("Wellington Araujo", "wellington@hotmail.com", "ftk1237525");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/h2[2]", "Usuários cadastrados");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[1]", "1");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[2]", "Wellington Araujo");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[3]", "wellington@hotmail.com");
+
+	}
+
+	@Test
+	public void tela10_cadastrarDoisUsuarios() {
+
+		cadastrarUsuario("Wellington Araujo", "wellington@hotmail.com", "ftk1237525");
+
+		cadastrarUsuario("Sabrina Lima", "sabrina@hotmail.com", "gfnhbg54515");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/h2[2]", "Usuários cadastrados");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[1]", "1");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr[2]/td[1]", "2");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[2]", "Wellington Araujo");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr[2]/td[2]", "Sabrina Lima");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[3]", "wellington@hotmail.com");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr[2]/td[3]", "sabrina@hotmail.com");
+	}
+
+	@Test
+	public void tela11_excluirUsuario() {
+
+		cadastrarUsuario("Wellington Araujo", "wellington@hotmail.com", "ftk1237525");
+
+		cadastrarUsuario("Sabrina Lima", "sabrina@hotmail.com", "gfnhbg54515");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/h2[2]", "Usuários cadastrados");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[1]", "1");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr[2]/td[1]", "2");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[2]", "Wellington Araujo");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr[2]/td[2]", "Sabrina Lima");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr/td[3]", "wellington@hotmail.com");
+
+		validarExistenciaElementoPeloXpath("/html/body/div/div/div/div[2]/table/tr[2]/td[3]", "sabrina@hotmail.com");
+		
+		try {
+			navegador.findElement(By.xpath("/html/body/div/div/div/div[2]/table/tr[2]/td[2]"));
+			boolean excluido = false;
+		} catch (Exception e) {
+			excluido = true;
+		}
+		
+
+	}
+
+	@After
+	public void tearDown() {
+
+		navegador.close();
+	}
+}

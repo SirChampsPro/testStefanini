@@ -1,0 +1,11 @@
+package webdriverJava;
+
+import org.junit.Test;
+
+public class telaCadastroUsuarioStefaniniTest {
+
+	@Test
+	public void cadastrarUsuario () {
+		System.setProperty("webdriver.chrome.driver", "/home/wellington/eclipse-workspace/chromedriver_linux64/chromedriver")
+	}
+}
